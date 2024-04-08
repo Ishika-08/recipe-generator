@@ -37,9 +37,7 @@ export default function LandingPage() {
 		</button>
 	</div>
 </header>
-
-
-        <section className="bg-gray-100 text-gray-800">
+<section className="bg-gray-100 text-gray-800">
 	<div className="container mx-auto flex flex-col items-center px-4 py-16 text-center md:py-32 md:px-10 lg:px-32 xl:max-w-3xl">
 		<h1 className="text-4xl font-bold leading-none sm:text-5xl">Quisquam necessita vel
 			<span className="text-violet-600">laborum doloribus</span>delectus
