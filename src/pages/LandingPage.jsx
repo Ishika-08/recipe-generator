@@ -8,9 +8,7 @@ export default function LandingPage() {
 		<>
 
 			<LandingHeader/>
-
 			<LandingBodySection	/>
-
 			<LandingFooter />
 		</>
 	)
