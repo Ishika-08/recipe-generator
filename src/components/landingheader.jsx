@@ -11,10 +11,10 @@ export default function LandingHeader(){
                 </a>
                 <ul className="items-stretch hidden space-x-3 lg:flex">
                     <li className="flex">
-                        <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600 hover:border-purple-400">Browse free</a>
+                        <a rel="noopener noreferrer" href="/browsefree" className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600 hover:border-purple-400">Browse free</a>
                     </li>
                     <li className="flex">
-                        <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2  dark:border- hover:border-purple-400">Trending</a>
+                        <a rel="noopener noreferrer" href="/trending" className="flex items-center px-4 -mb-1 border-b-2  dark:border- hover:border-purple-400">Trending</a>
                     </li>
                     <li className="flex">
                         <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border- hover:border-purple-400">Blog</a>
