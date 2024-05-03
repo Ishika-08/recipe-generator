@@ -1,17 +1,18 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 export default function RecipePage() {
-  // const [data, setData] = useState()
+  const { id } = useParams()
+  const [data, setData] = useState({})
 
-  // useEffect(() => {
-  //   axios.get("https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772")
-  //       .then((response) => {
-  //         console.log(response.data.meals[0])
-  //         setData(response.data.meals[0])
-  //       })
+  useEffect(() => {
+    axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+        .then((response) => {
+          setData(response.data.meals[0])
+        })
         
-  // },[])
+  },[])
 
   const renderIngredients = () => {
     const ingredients = [];
@@ -31,62 +32,7 @@ export default function RecipePage() {
     return ingredients;
   };
 
-  const data = {
-    "idMeal": "52772",
-    "strMeal": "Teriyaki Chicken Casserole",
-    "strDrinkAlternate": null,
-    "strCategory": "Chicken",
-    "strArea": "Japanese",
-    "strInstructions": "Preheat oven to 350° F. Spray a 9x13-inch baking pan with non-stick spray. Combine soy sauce, ½ cup water, brown sugar, ginger and garlic in a small saucepan and cover. Bring to a boil over medium heat. Remove lid and cook for one minute once boiling. Meanwhile, stir together the corn starch and 2 tablespoons of water in a separate dish until smooth. Once sauce is boiling, add mixture to the saucepan and stir to combine. Cook until the sauce starts to thicken then remove from heat. Place the chicken breasts in the prepared pan. Pour one cup of the sauce over top of chicken. Place chicken in oven and bake 35 minutes or until cooked through. Remove from oven and shred chicken in the dish using two forks. *Meanwhile, steam or cook the vegetables according to package directions. Add the cooked vegetables and rice to the casserole dish with the chicken. Add most of the remaining sauce, reserving a bit to drizzle over the top when serving. Gently toss everything together in the casserole dish until combined. Return to oven and cook 15 minutes. Remove from oven and let stand 5 minutes before serving. Drizzle each serving with remaining sauce. Enjoy!",
-    "strMealThumb": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg",
-    "strTags": "Meat,Casserole",
-    "strYoutube": "https://www.youtube.com/watch?v=4aZr5hZXP_s",
-    "strIngredient1": "soy sauce",
-    "strIngredient2": "water",
-    "strIngredient3": "brown sugar",
-    "strIngredient4": "ground ginger",
-    "strIngredient5": "minced garlic",
-    "strIngredient6": "cornstarch",
-    "strIngredient7": "chicken breasts",
-    "strIngredient8": "stir-fry vegetables",
-    "strIngredient9": "brown rice",
-    "strIngredient10": "",
-    "strIngredient11": "",
-    "strIngredient12": "",
-    "strIngredient13": "",
-    "strIngredient14": "",
-    "strIngredient15": "",
-    "strIngredient16": null,
-    "strIngredient17": null,
-    "strIngredient18": null,
-    "strIngredient19": null,
-    "strIngredient20": null,
-    "strMeasure1": "3/4 cup",
-    "strMeasure2": "1/2 cup",
-    "strMeasure3": "1/4 cup",
-    "strMeasure4": "1/2 teaspoon",
-    "strMeasure5": "1/2 teaspoon",
-    "strMeasure6": "4 Tablespoons",
-    "strMeasure7": "2",
-    "strMeasure8": "1 (12 oz.)",
-    "strMeasure9": "3 cups",
-    "strMeasure10": "",
-    "strMeasure11": "",
-    "strMeasure12": "",
-    "strMeasure13": "",
-    "strMeasure14": "",
-    "strMeasure15": "",
-    "strMeasure16": null,
-    "strMeasure17": null,
-    "strMeasure18": null,
-    "strMeasure19": null,
-    "strMeasure20": null,
-    "strSource": null,
-    "strImageSource": null,
-    "strCreativeCommonsConfirmed": null,
-    "dateModified": null
-    }
-
+  
   return (
  <>
   <header className="p-4 bg-gray-100 text-gray-800">
@@ -100,16 +46,16 @@ export default function RecipePage() {
         </a>
         <ul className="items-stretch hidden space-x-3 lg:flex">
           <li className="flex">
-            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Link</a>
+            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Home</a>
           </li>
           <li className="flex">
-            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Link</a>
+            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Trending</a>
           </li>
           <li className="flex">
-            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Link</a>
+            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Category</a>
           </li>
           <li className="flex">
-            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Link</a>
+            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">About</a>
           </li>
         </ul>
       </div>
@@ -141,13 +87,13 @@ export default function RecipePage() {
             </div>
         </div>
         <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-          <p className="leading-relaxed text-lg mb-4">
-          Instructions:
-
-            {data.strInstructions}
-
-          </p>
-          <a className="text-white-900 inline-flex items-center p-3 uppercase bg-lime-200 hover:bg-amber-200">Download recipe
+        {data.strInstructions && data.strInstructions.split('.').map((part, index, array) => (
+                <div key={index}>
+                    <p>{part.trim()}{index !== array.length - 1 && '.'}</p>
+                    {index !== array.length - 1 && <br />} 
+                </div>
+            ))}
+          <a className="text-white-900 inline-flex items-center p-3 uppercase bg-lime-200 hover:bg-amber-200" target='_blank' href={data.strYoutube}>Watch Video
             <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>

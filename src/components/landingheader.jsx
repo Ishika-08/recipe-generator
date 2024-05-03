@@ -13,16 +13,16 @@ export default function LandingHeader(){
                 </a>
                 <ul className="items-stretch hidden space-x-3 lg:flex">
                     <li className="flex">
-                        <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600 hover:border-purple-400">Browse free</a>
+                        <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border- hover:border-purple-400 hover:text-lime-500">Browse free</a>
                     </li>
                     <li className="flex">
-                        <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2  dark:border- hover:border-purple-400">Trending</a>
+                        <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2  dark:border- hover:border-purple-400 hover:text-lime-500">Trending</a>
                     </li>
                     <li className="flex">
-                        <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border- hover:border-purple-400">Blog</a>
+                        <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border- hover:border-purple-400 hover:text-lime-500">Blog</a>
                     </li>
                     <li className="flex">
-                        <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border- hover:border-purple-400">About Us</a>
+                        <a rel="noopener noreferrer" href="/pricing" className="flex items-center px-4 -mb-1 border-b-2 dark:border- hover:border-purple-400">Pricing</a>
                     </li>
                 </ul>
                 <div className="items-center flex-shrink-0 hidden lg:flex">
