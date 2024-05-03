@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom"
 import {useState} from "react"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../Firebase/firebase"
+import {db} from "../Firebase/firebase"
+import {getDocs, collection, query, where} from "firebase/firestore"
+import {toast } from 'react-toastify';
 
 export default function LoginPage() {
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
-        email: "",
-        password: ""
+        Email: "",
+        Password: ""
     })
 
     const handleChange = (e) => {
@@ -18,18 +19,24 @@ export default function LoginPage() {
         })
     }
 
-    const handleSubmit = () =>{
-        signInWithEmailAndPassword(auth, formData.email, formData.password)
-        .then((userCredential) => {
-            const user = userCredential.user
-            console.log(user)
-            navigate("/recipe")
-        })  
-        .catch((error) => {
-            const errorCode = error.code
-            const errorMessage = error.message
-            console.log(errorCode, errorMessage)
-        })
+    const handleSubmit = async () =>{
+        const dbRef = collection(db, "UserDetails")
+        const matchEmail= query(dbRef, where("Email", "==", formData.Email))
+        try{
+            const snapshot = await getDocs(matchEmail)
+            const emailMatchingArray = snapshot.docs.map((doc) => doc.data())
+            console.log(emailMatchingArray)
+            if(emailMatchingArray.length > 0){
+                navigate("/recipe")
+            }else{
+                const error = "Invalid email or password";
+                console.log(error)
+                toast.error(error);
+            }
+        }
+        catch(e){
+            console.error("Error getting documents: ", e)
+        }
     }
 
   return (
@@ -43,14 +50,14 @@ export default function LoginPage() {
                 <div className="space-y-4">
                     <div>
                         <label htmlFor="email" className="block mb-2 text-sm">Email address</label>
-                        <input type="email" onChange={(e)=> handleChange(e)} name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800" fdprocessedid="1kqedp" />
+                        <input type="email" onChange={(e)=> handleChange(e)} name="Email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800" fdprocessedid="1kqedp" />
                     </div>
                     <div>
                         <div className="flex justify-between mb-2">
                             <label htmlFor="password" className="text-sm">Password</label>
                             <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-600">Forgot password?</a>
                         </div>
-                        <input type="password" onChange={(e)=> handleChange(e)} name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800" fdprocessedid="90bql" />
+                        <input type="password" onChange={(e)=> handleChange(e)} name="Password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800" fdprocessedid="90bql" />
                     </div>
                 </div>
                 <div className="space-y-2">
