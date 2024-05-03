@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import {db} from "../Firebase/firebase";
 import {getDocs, addDoc, collection, query, where} from "firebase/firestore";
 import {toast } from 'react-toastify';
+import LandingHeader from "../components/landingheader";
 
 
 export default function SignUpPage() {
@@ -37,6 +38,7 @@ export default function SignUpPage() {
                 const entry = await addDoc(collection(db, "UserDetails"), formData)
                 console.log("Document written with ID: ", entry.id);
                 toast.success("User added successfully");
+                navigate("/home")
             }
         }
         catch(e){
@@ -46,6 +48,9 @@ export default function SignUpPage() {
     }
 
     return (
+        <>
+        <LandingHeader/>
+
         <div className='flex justify-center mt-[100px]'>
             <div className="flex flex-col max-w-md p-6 sm:p-10 shadow-lg text-gray-800 rounded-lg">
                 <div className="mb-8 text-center">
@@ -85,5 +90,8 @@ export default function SignUpPage() {
                 </form>
             </div>
         </div>
+
+        </>
+       
       )
 }

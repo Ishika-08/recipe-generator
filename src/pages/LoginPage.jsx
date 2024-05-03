@@ -3,6 +3,7 @@ import {useState} from "react"
 import {db} from "../Firebase/firebase"
 import {getDocs, collection, query, where} from "firebase/firestore"
 import {toast } from 'react-toastify';
+import LandingHeader from "../components/landingheader";
 
 export default function LoginPage() {
     const navigate = useNavigate()
@@ -21,16 +22,17 @@ export default function LoginPage() {
 
     const handleSubmit = async () =>{
         const dbRef = collection(db, "UserDetails")
-        const matchEmail= query(dbRef, where("Email", "==", formData.Email))
+        const matchEmail= query(dbRef, 
+            where("Email", "==", formData.Email),
+            where("Password", "==", formData.Password)
+        );
         try{
             const snapshot = await getDocs(matchEmail)
             const emailMatchingArray = snapshot.docs.map((doc) => doc.data())
-            console.log(emailMatchingArray)
             if(emailMatchingArray.length > 0){
-                navigate("/recipe")
+                navigate("/home")
             }else{
                 const error = "Invalid email or password";
-                console.log(error)
                 toast.error(error);
             }
         }
@@ -40,7 +42,10 @@ export default function LoginPage() {
     }
 
   return (
-    <div className='flex justify-center mt-[100px]'>
+    <>
+        <LandingHeader/>
+
+        <div className='flex justify-center mt-[100px]'>
         <div className="flex flex-col max-w-md p-6 sm:p-10 shadow-lg text-gray-800 rounded-lg">
             <div className="mb-8 text-center">
                 <h1 className="my-3 text-4xl font-bold">Log in</h1>
@@ -71,5 +76,6 @@ export default function LoginPage() {
             </form>
         </div>
     </div>
+    </>
   )
 }
