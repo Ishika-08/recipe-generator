@@ -20,7 +20,7 @@ export default function LandingHeader(){
                         <a rel="noopener noreferrer" href="/blog" className="flex items-center px-4 -mb-1 border-b-2 dark:border- hover:border-purple-400">Blog</a>
                     </li>
                     <li className="flex">
-                        <a rel="noopener noreferrer" href="/aboutus" className="flex items-center px-4 -mb-1 border-b-2 dark:border- hover:border-purple-400">About Us</a>
+                        <a rel="noopener noreferrer" href="/pricing" className="flex items-center px-4 -mb-1 border-b-2 dark:border- hover:border-purple-400">Pricing</a>
                     </li>
                 </ul>
                 <div className="items-center flex-shrink-0 hidden lg:flex">
