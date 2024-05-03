@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import SignUpPage from './pages/SignUpPage'
 import RecipePage from './pages/RecipePage'
+import Home from './pages/Home'
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route path="/login" element={<LoginPage/>}/>
       <Route path="/signup" element={<SignUpPage/>}/>
       <Route path="/recipe" element={<RecipePage/>}/>
+      <Route path="/home" element={<Home/>}/>
     </Routes>
    </Router>
   )
