@@ -8,6 +8,7 @@ import BrowseFree from './pages/BrowseFree'
 import Trending from './pages/Trending'
 import BlogPage from './pages/BlogPage'
 import PricingPage from './pages/PricingPage'
+import Home from './pages/Home'
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
       <Route path='/trending' element={<Trending/>}/>
       <Route path="/blog" element={<BlogPage/>}/>
       <Route path="/pricing" element={<PricingPage/>}/>
+      <Route path='/home' element={<Home/>}/>
     </Routes>
    </Router>
   )

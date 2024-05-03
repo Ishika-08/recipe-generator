@@ -14,16 +14,16 @@ export default function RecipePage() {
         </a>
         <ul className="items-stretch hidden space-x-3 lg:flex">
           <li className="flex">
-            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Link</a>
+            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Home</a>
           </li>
           <li className="flex">
-            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Link</a>
+            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Trending</a>
           </li>
           <li className="flex">
-            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Link</a>
+            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Category</a>
           </li>
           <li className="flex">
-            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">Link</a>
+            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-amber-600 hover:border-lime-600">About</a>
           </li>
         </ul>
       </div>
