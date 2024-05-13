@@ -5,7 +5,7 @@ export default function Search() {
     const [search, setSearch] = useState("")
 
     const handleSearch = () =>{
-        const api = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
+        const api = `https://www.themealdb.com/api/json/v1/1/${search}`
         axios.get(api)
         .then((response) => {
             console.log(response.data.meals)

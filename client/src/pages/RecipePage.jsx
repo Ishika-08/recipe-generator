@@ -1,3 +1,5 @@
+// This page shows the individual recipe details
+
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
