@@ -9,29 +9,39 @@ export default function RecipePage() {
   const [data, setData] = useState({})
 
   useEffect(() => {
-    axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-        .then((response) => {
-          setData(response.data.meals[0])
-        })
-        
+    // axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+    //     .then((response) => {
+    //       setData(response.data.meals[0])
+    //     })
+    const objectReceived = JSON.parse(localStorage.getItem('recipeData'));
+    console.log(objectReceived)
+    const recipe = objectReceived.find((recipe) => recipe.idMeal === id);
+    console.log(recipe)
+    setData(recipe);
   },[])
 
   const renderIngredients = () => {
-    const ingredients = [];
-    for (let i = 1; i <= 20; i++) {
-      const ingredientKey = `strIngredient${i}`;
-      const measureKey = `strMeasure${i}`;
-      const ingredient = data[ingredientKey];
-      const measure = data[measureKey];
-      if (ingredient && ingredient.trim() !== '' && measure && measure.trim() !== '') {
-        ingredients.push(
-          <li key={i}>
-            {ingredient} - {measure}
-          </li>
-        );
-      }
+    if(data && data.strIngredients){
+      return data.strIngredients;
     }
-    return ingredients;
+    else{
+      const ingredients = [];
+      for (let i = 1; i <= 20; i++) {
+        const ingredientKey = `strIngredient${i}`;
+        const measureKey = `strMeasure${i}`;
+        const ingredient = data[ingredientKey];
+        const measure = data[measureKey];
+        if (ingredient && ingredient.trim() !== '' && measure && measure.trim() !== '') {
+          ingredients.push(
+            <li key={i}>
+              {ingredient} - {measure}
+            </li>
+          );
+        }
+      }
+      return ingredients;
+
+    }
   };
 
   
@@ -75,9 +85,9 @@ export default function RecipePage() {
   <div className="container px-5 py-24 mx-auto flex flex-col text-center">
     <h2 className="text-3xl font-medium py-7 ">{data.strMeal}</h2>
     <div className="lg:w-4/6 mx-auto">
-      <div className="object-cover rounded-lg h-72 overflow-hidden">
+      {/* <div className="object-cover rounded-lg h-72 overflow-hidden">
         <img alt="content" className="object-cover object-center h-full w-full" src={data.strMealThumb}/>
-      </div>
+      </div> */}
       <div className="flex flex-col sm:flex-row mt-10">
         <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
           <div className="flex flex-col items-center text-center justify-center">
@@ -95,11 +105,11 @@ export default function RecipePage() {
                     {index !== array.length - 1 && <br />} 
                 </div>
             ))}
-          <a className="text-white-900 inline-flex items-center p-3 uppercase bg-lime-200 hover:bg-amber-200" target='_blank' href={data.strYoutube}>Watch Video
+          {/* <a className="text-white-900 inline-flex items-center p-3 uppercase bg-lime-200 hover:bg-amber-200" target='_blank' href={data.strYoutube}>Watch Video
             <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

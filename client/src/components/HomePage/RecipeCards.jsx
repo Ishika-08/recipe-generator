@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { FaSearch } from "react-icons/fa"
+import Header from "./Header"
 
 export default function RecipeCards(){
 	const navigate = useNavigate()
@@ -17,15 +18,41 @@ export default function RecipeCards(){
 		const api = `https://www.themealdb.com/api/json/v1/1/search.php?s=`
         axios.get(api)
         .then((response) => {
+			localStorage.setItem('recipeData', JSON.stringify(response.data.meals));
             setData(response.data.meals)
         })
 	},[])
 
     const handleSearch = () =>{
-        const api = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
-        axios.get(api)
+        const api = `http://localhost:3000/generate`
+        axios.post(api, {ingredients: search})
         .then((response) => {
-			setData(response.data.meals)
+			if(typeof response.data === "string"){
+				const data = JSON.parse(response.data)
+				localStorage.setItem('recipeData', JSON.stringify(data));
+				console.log(data)
+				setData(data)
+			}
+			else if(typeof response.data === "object"){
+				localStorage.setItem('recipeData', JSON.stringify(response.data));
+				console.log(response.data)
+				setData(response.data)
+
+			}
+			// const textWithoutBackticks = response.data.substring(3, response.data.length - 3);
+			// const textWithoutBackticks = response.data
+			// console.log(textWithoutBackticks)
+			// const data = JSON.parse(textWithoutBackticks)
+			// console.log(data)
+			// console.log(typeof response.data)
+			// const string = JSON.stringify(response.data)
+			// const data = JSON.parse(string)
+			// console.log(data)
+			// console.log(response.data)
+			// setData(response.data)
+			// response.data.map((item) => {
+			// 	console.log(item)
+			// })
         })
     }
 
@@ -41,6 +68,7 @@ export default function RecipeCards(){
 
     return(
         <>
+			<Header/>
 			<div className="relative flex justify-center my-10">
 				<input 
 				onChange={(e) => handleChange(e)} 
@@ -61,7 +89,7 @@ export default function RecipeCards(){
                         <h1 className="font-bold text-2xl text-lime-700">{item.strMeal}</h1>
                 	</div>
                 	<div>
-						<img src={item.strMealThumb} className="rounded-lg"/>
+						{/* <img src={item.strMealThumb} className="rounded-lg"/> */}
                 		<p className="text-sm dark:text-gray-600 mt-5">{`${item.strInstructions.substring(0,100)}.....`}</p>
                 	</div>
                 </div>

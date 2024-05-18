@@ -1,11 +1,11 @@
 import React from 'react'
 import LandingFooter from '../components/LandingFooter'
-import SearchBar from '../components/SearchBar'
+import RecipeCards from '../components/HomePage/RecipeCards'
 
 export default function Home(){
     return(
         <>
-            <SearchBar/>
+            <RecipeCards/>
             
             <LandingFooter/>
         </>
